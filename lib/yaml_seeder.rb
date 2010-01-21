@@ -98,7 +98,7 @@ class YamlSeeder < Hash
         end
       end
 
-      @myobject = model_class.create (row)      
+      @myobject = model_class.create(row)      
       records_in_table = @@record_cache.has_key?(@table_name) ? @@record_cache[@table_name] : Hash.new
       records_in_table[label] = @myobject
       @@record_cache[@table_name] = records_in_table

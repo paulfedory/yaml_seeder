@@ -23,11 +23,10 @@ For more information, google "foxy fixtures" or see http://ryandaigle.com/articl
   
 == Usage
 
-Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later, add the following to your "db/seeds.rb" file (don't forget to require 'yaml_seeder'!)
+Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later, add the following to your "db/seeds.rb" file
 
 ===db/seeds.rb
 
-  require 'yaml_seeder'
   Dir.glob(RAILS_ROOT + '/db/seeds/*.yml').each do |file|
     YamlSeeder.seed('db/seeds', File.basename(file, '.*'))
   end
@@ -36,7 +35,6 @@ Alternatively, or if you're using an earlier version of Rails, you can create a 
 
 ===lib/tasks/seed.rake
 
-  require 'yaml_seeder'
   namespace :db do
     desc "Load seed files (from db/seeds) into the current environment's database." 
     task :yaml_seed => :environment do
