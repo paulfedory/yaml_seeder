@@ -38,8 +38,8 @@ Alternatively, or if you're using an earlier version of Rails, you can create a 
   end
 
 == Notes
-*If ID's are not specified in the YAML seed files, then they will be assigned by the normal creation of saving an ActiveRecord (ie. the next ID available)
-*Currently, YamlSeeder only supports belong-to associations
+  *If ID's are not specified in the YAML seed files, then they will be assigned by the normal creation of saving an ActiveRecord (ie. the next ID available)
+  *Currently, YamlSeeder only supports belong-to associations
 
 
 Copyright (c) 2010 Paul Fedory, released under the MIT license
