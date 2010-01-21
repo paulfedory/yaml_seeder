@@ -9,6 +9,9 @@ class YamlSeeder < Hash
   @@yaml_cache = Hash.new
   @@seedfile_directory = ""
   
+  # The main entry point of YamlSeeder
+  # * seedfile_directory: the directory containing the YAML seed files (eg. db/seeds)
+  # * table_names: an array of strings containing the names of the models you wish to seed
   def self.seed(seedfile_directory, table_names, class_names = {})
     @@seedfile_directory = seedfile_directory
     table_names = [table_names].flatten.map { |n| n.to_s }
@@ -30,10 +33,6 @@ class YamlSeeder < Hash
       end
 
     end    
-  end
-  
-  def self.model_is_cached?(table_name)
-    @@record_cache.has_key?(table_name)
   end
   
   def initialize(table_name, class_name, seedfile_path, file_filter = DEFAULT_FILTER_RE)
@@ -108,6 +107,10 @@ class YamlSeeder < Hash
   end
   
   private
+  def self.model_is_cached?(table_name)
+    @@record_cache.has_key?(table_name)
+  end
+  
   def read_yaml_seed_files
     yaml_string = ""
     Dir["#{@seedfile_path}/**/*.yml"].select { |f| test(?f, f) }.each do |subseed_path|

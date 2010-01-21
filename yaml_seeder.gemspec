@@ -1,7 +1,7 @@
 require 'rake'
 spec = Gem::Specification.new do |s|
   s.name = 'yaml_seeder'
-  s.version = '0.1'
+  s.version = '0.0.1'
   s.summary = 'Seeds your ActiveRecord models from YAML files'
   s.description = 'Seeds your ActiveRecord models from YAML files, when the YAML files are formatted like test fixtures.'
   s.author = 'Paul Fedory'

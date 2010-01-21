@@ -17,10 +17,17 @@ It's a good idea to put these seed files in their own directory, say "db/seeds".
 
 For more information, google "foxy fixtures" or see http://ryandaigle.com/articles/2007/10/26/what-s-new-in-edge-rails-fixtures-just-got-a-whole-lot-easier
   
+== Installation
+
+  gem install yaml_seeder
+  
 == Usage
 
-Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later, add the following to your "db/seeds.rb" file:
+Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later, add the following to your "db/seeds.rb" file (don't forget to require 'yaml_seeder'!)
 
+===db/seeds.rb
+
+  require 'yaml_seeder'
   Dir.glob(RAILS_ROOT + '/db/seeds/*.yml').each do |file|
     YamlSeeder.seed('db/seeds', File.basename(file, '.*'))
   end
@@ -28,6 +35,8 @@ Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later
 Alternatively, or if you're using an earlier version of Rails, you can create a rake task (eg. called "db:yaml_seed"):
 
 ===lib/tasks/seed.rake
+
+  require 'yaml_seeder'
   namespace :db do
     desc "Load seed files (from db/seeds) into the current environment's database." 
     task :yaml_seed => :environment do
@@ -38,8 +47,8 @@ Alternatively, or if you're using an earlier version of Rails, you can create a 
   end
 
 == Notes
-  *If ID's are not specified in the YAML seed files, then they will be assigned by the normal creation of saving an ActiveRecord (ie. the next ID available)
-  *Currently, YamlSeeder only supports belong-to associations
+  * If ID's are not specified in the YAML seed files, then they will be assigned by the normal creation of saving an ActiveRecord (ie. the next ID available).
+  * Currently, YamlSeeder only supports belong-to associations.
 
 
 Copyright (c) 2010 Paul Fedory, released under the MIT license
