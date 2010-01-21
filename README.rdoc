@@ -1,13 +1,35 @@
 = YamlSeeder
-==========
+Seeds your ActiveRecord models from Foxy Fixture-like YAML files
 
-Introduction goes here.
+== YAML seed files
+YamlSeeder works upon seed files which are very similar to fixtures - the foxy-fixtures introduced in Rails 2.0. For example, consider a Company model and an Employee model, where an employee belongs to a company:
+
+=== companies.yml
+dunder:
+  name: Dunder Mifflin
+
+=== employees.yml
+michael:
+  name: Michael Scott
+  company: dunder
+
+It's a good idea to put these seed files in their own directory, say "db/seeds".
+
+For more information, google "foxy fixtures" or see http://ryandaigle.com/articles/2007/10/26/what-s-new-in-edge-rails-fixtures-just-got-a-whole-lot-easier
+  
+== Usage
+
+Use YamlSeeder to seed your Rails database. If you're using Rails 2.3.4 or later, add the following to your "db/seeds.rb" file:
+
+Dir.glob(RAILS_ROOT + '/db/seeds/*.yml').each do |file|
+  YamlSeeder.seed('db/seeds', File.basename(file, '.*'))
+end
+
+If you're using an earlier version of 
+
+== Notes
+*If ID's are not specified in the YAML seed files, then they will be assigned by the normal creation of saving an ActiveRecord (ie. the next ID available)
+*Currently, YamlSeeder only supports belong-to associations
 
 
-Example
-=======
-
-Example goes here.
-
-
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+Copyright (c) 2010 Paul Fedory, released under the MIT license

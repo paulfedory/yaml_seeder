@@ -50,7 +50,6 @@ class YamlSeeder < Hash
   
   def insert_records
     each do |label, row|
-      # seed is a YamlSeed! and there's one self for each type of thing being seeded
 
       if model_class && model_class < ActiveRecord::Base
 
