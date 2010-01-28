@@ -21,3 +21,17 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "yaml_seeder"
+    gemspec.summary = "Seeds your ActiveRecord models from YAML files."
+    gemspec.description = "Seeds your ActiveRecord models from YAML files, when the YAML files are formatted like test fixtures"
+    gemspec.homepage = "http://github.com/paulfedory/yaml_seeder"
+    gemspec.authors = ["Paul Fedory"]
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
